@@ -27,14 +27,14 @@ import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 import com.ootb.client.application.ApplicationPresenter;
+import com.ootb.client.box.request.BoxEntityProxy;
+import com.ootb.client.box.request.BoxRequestFactory;
+import com.ootb.client.box.request.BoxServiceRequest;
 import com.ootb.client.place.NameTokens;
-import com.ootb.client.request.MyRequestFactory;
-import com.ootb.client.request.MyServiceRequest;
-import com.ootb.client.request.proxy.MyEntityProxy;
 
 public class DeliveryInfoPagePresenter extends Presenter<DeliveryInfoPagePresenter.MyView, DeliveryInfoPagePresenter.MyProxy> {
     public interface MyView extends View {
-        void setData(List<MyEntityProxy> data);
+        void setData(List<BoxEntityProxy> data);
     }
 
     @ProxyStandard
@@ -42,16 +42,15 @@ public class DeliveryInfoPagePresenter extends Presenter<DeliveryInfoPagePresent
     public interface MyProxy extends ProxyPlace<DeliveryInfoPagePresenter> {
     }
 
-    private final MyRequestFactory requestFactory;
+    private final BoxRequestFactory requestFactory;
 
-    private MyServiceRequest currentContext;
+    private BoxServiceRequest currentContext;
     private String searchToken;
 
     @Inject
     public DeliveryInfoPagePresenter(final EventBus eventBus, final MyView view, final MyProxy proxy,
-            final MyRequestFactory requestFactory) {
+            final BoxRequestFactory requestFactory) {
         super(eventBus, view, proxy, ApplicationPresenter.TYPE_SetMainContent);
-//        super(eventBus, view, proxy);
         this.requestFactory = requestFactory;
     }
 
@@ -63,13 +62,13 @@ public class DeliveryInfoPagePresenter extends Presenter<DeliveryInfoPagePresent
     }
 
     private void initializeContext() {
-        currentContext = requestFactory.myService();
+        currentContext = requestFactory.boxService();
     }
 
     private void loadEntities() {
-        requestFactory.myService().loadAll(searchToken).fire(new Receiver<List<MyEntityProxy>>() {
+        requestFactory.boxService().loadAll(searchToken).fire(new Receiver<List<BoxEntityProxy>>() {
             @Override
-            public void onSuccess(List<MyEntityProxy> data) {
+            public void onSuccess(List<BoxEntityProxy> data) {
                 getView().setData(data);
             }
         });

@@ -26,8 +26,8 @@ import com.gwtplatform.mvp.client.annotations.ErrorPlace;
 import com.gwtplatform.mvp.client.annotations.UnauthorizedPlace;
 import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
 import com.gwtplatform.mvp.client.gin.DefaultModule;
-import com.gwtplatform.mvp.client.proxy.DefaultPlaceManager;
 import com.ootb.client.application.ApplicationModule;
+import com.ootb.client.box.request.BoxRequestFactory;
 import com.ootb.client.place.NameTokens;
 import com.ootb.client.place.PlaceManager;
 import com.ootb.client.request.MyRequestFactory;
@@ -44,6 +44,7 @@ public class ClientModule extends AbstractPresenterModule {
         bindConstant().annotatedWith(UnauthorizedPlace.class).to(NameTokens.home);
 
         bind(MyRequestFactory.class).toProvider(RequestFactoryProvider.class).in(Singleton.class);
+        bind(BoxRequestFactory.class).toProvider(BoxRequestFactoryProvider.class).in(Singleton.class);
     }
 
     static class RequestFactoryProvider implements Provider<MyRequestFactory> {
@@ -59,4 +60,19 @@ public class ClientModule extends AbstractPresenterModule {
             return requestFactory;
         }
     }
+
+    static class BoxRequestFactoryProvider implements Provider<BoxRequestFactory> {
+        private final BoxRequestFactory requestFactory;
+
+        @Inject
+        public BoxRequestFactoryProvider(EventBus eventBus) {
+            requestFactory = GWT.create(BoxRequestFactory.class);
+            requestFactory.initialize(eventBus);
+        }
+
+        public BoxRequestFactory get() {
+            return requestFactory;
+        }
+    }
+
 }

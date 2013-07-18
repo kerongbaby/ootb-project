@@ -28,22 +28,22 @@ import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.view.client.ListDataProvider;
 import com.google.inject.Inject;
 import com.gwtplatform.mvp.client.ViewImpl;
-import com.ootb.client.request.proxy.MyEntityProxy;
+import com.ootb.client.box.request.BoxEntityProxy;
 
 public class DeliveryInfoPageView extends ViewImpl implements DeliveryInfoPagePresenter.MyView {
     public interface Binder extends UiBinder<Widget, DeliveryInfoPageView> {
     }
 
     @UiField(provided = true)
-    CellTable<MyEntityProxy> myTable;
+    CellTable<BoxEntityProxy> myTable;
 
-    private final ListDataProvider<MyEntityProxy> dataProvider;
+    private final ListDataProvider<BoxEntityProxy> dataProvider;
 
     @Inject
     public DeliveryInfoPageView(final Binder uiBinder,
-            final ListDataProvider<MyEntityProxy> dataProvider) {
+            final ListDataProvider<BoxEntityProxy> dataProvider) {
         this.dataProvider = dataProvider;
-        this.myTable = new CellTable<MyEntityProxy>();
+        this.myTable = new CellTable<BoxEntityProxy>();
 
         initCellTable();
         dataProvider.addDataDisplay(myTable);
@@ -51,7 +51,9 @@ public class DeliveryInfoPageView extends ViewImpl implements DeliveryInfoPagePr
     }
 
     @Override
-    public void setData(List<MyEntityProxy> data) {
+    public void setData(List<BoxEntityProxy> data) {
+    	if(data == null )
+    		return;
         dataProvider.getList().clear();
         dataProvider.getList().addAll(data);
         dataProvider.refresh();
@@ -62,18 +64,20 @@ public class DeliveryInfoPageView extends ViewImpl implements DeliveryInfoPagePr
     }
 
     private void initCellTable() {
-        TextColumn<MyEntityProxy> firstNameColumn = new TextColumn<MyEntityProxy>() {
+        TextColumn<BoxEntityProxy> firstNameColumn = new TextColumn<BoxEntityProxy>() {
             @Override
-            public String getValue(MyEntityProxy object) {
-                return object.getFirstName();
+            public String getValue(BoxEntityProxy object) {
+            	if( object == null)
+            		return " ";
+                return object.getId().toString();
             }
         };
         myTable.addColumn(firstNameColumn, "First name");
 
-        TextColumn<MyEntityProxy> lastNameColumn = new TextColumn<MyEntityProxy>() {
+        TextColumn<BoxEntityProxy> lastNameColumn = new TextColumn<BoxEntityProxy>() {
             @Override
-            public String getValue(MyEntityProxy object) {
-                return object.getLastName();
+            public String getValue(BoxEntityProxy object) {
+                return "object.getLastName()";
             }
         };
         myTable.addColumn(lastNameColumn, "Last name");
