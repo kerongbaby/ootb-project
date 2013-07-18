@@ -6,7 +6,7 @@ ootb-project是一个关于具有本地属性的私密空间的产生、消耗�
 1. 每一个BOX的产生都带来一系列的属性，其序列号是唯一的，在其生命期对应各种属性和事件。<br />
 2. BOX消耗的构成产生各种信息。该信息是价值所在。<br />
 
-20130718<br />
+20130718 笔记
 ====
 1. BoxEntity是数据实体，该实体在服务端代码存在，在GWT客户端，用BoxEntityProxy来去耦合。而在服务端，用BoxEntityRepo来完成持久化。<br />
 2. BoxRequestFactory<br />
