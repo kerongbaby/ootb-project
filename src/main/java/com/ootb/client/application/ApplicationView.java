@@ -42,8 +42,6 @@ public class ApplicationView extends ViewWithUiHandlers<ApplicationUiHandlers> i
     @Inject
     public ApplicationView(Binder uiBinder) {
         initWidget(uiBinder.createAndBindUi(this));
-        main.getElement().getStyle().setBackgroundColor("#F0F0F0");
-        blackTitle.getElement().getStyle().setBackgroundColor("#0F0F0F");
     }
 
     @Override
