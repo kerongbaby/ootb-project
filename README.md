@@ -1,5 +1,9 @@
 ootb-project / Out-of-the-BOX Frame
 ==============
+
+
+ootb-project是一个关于具有本地属性的私密空间的产生、消耗和完结的信息化管理服务。
+
 20130718<br />
 1. BoxEntity是数据实体，该实体在服务端代码存在，在GWT客户端，用BoxEntityProxy来去耦合。而在服务端，用BoxEntityRepo来完成持久化。<br />
 2. BoxRequestFactory<br />
