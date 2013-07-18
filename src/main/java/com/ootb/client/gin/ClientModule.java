@@ -16,9 +16,6 @@
 
 package com.ootb.client.gin;
 
-import com.ootb.client.application.ApplicationModule;
-import com.ootb.client.place.NameTokens;
-import com.ootb.client.request.MyRequestFactory;
 import com.google.gwt.core.client.GWT;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
@@ -30,11 +27,15 @@ import com.gwtplatform.mvp.client.annotations.UnauthorizedPlace;
 import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
 import com.gwtplatform.mvp.client.gin.DefaultModule;
 import com.gwtplatform.mvp.client.proxy.DefaultPlaceManager;
+import com.ootb.client.application.ApplicationModule;
+import com.ootb.client.place.NameTokens;
+import com.ootb.client.place.PlaceManager;
+import com.ootb.client.request.MyRequestFactory;
 
 public class ClientModule extends AbstractPresenterModule {
     @Override
     protected void configure() {
-        install(new DefaultModule(DefaultPlaceManager.class));
+        install(new DefaultModule(PlaceManager.class));
         install(new ApplicationModule());
 
         // DefaultPlaceManager Places

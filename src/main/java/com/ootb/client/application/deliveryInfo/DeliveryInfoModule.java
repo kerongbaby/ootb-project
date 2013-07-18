@@ -14,19 +14,14 @@
  * the License.
  */
 
-package com.ootb.client.application;
+package com.ootb.client.application.deliveryInfo;
 
 import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
-import com.ootb.client.application.deliveryInfo.DeliveryInfoModule;
-import com.ootb.client.application.home.HomeModule;
 
-public class ApplicationModule extends AbstractPresenterModule {
+public class DeliveryInfoModule extends AbstractPresenterModule {
     @Override
     protected void configure() {
-        install(new HomeModule());
-        install(new DeliveryInfoModule());
-
-        bindPresenter(ApplicationPresenter.class, ApplicationPresenter.MyView.class, ApplicationView.class,
-                ApplicationPresenter.MyProxy.class);
+        bindPresenter(DeliveryInfoPagePresenter.class, DeliveryInfoPagePresenter.MyView.class, DeliveryInfoPageView.class,
+        		DeliveryInfoPagePresenter.MyProxy.class);
     }
 }

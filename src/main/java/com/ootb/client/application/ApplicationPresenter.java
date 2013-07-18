@@ -19,15 +19,19 @@ package com.ootb.client.application;
 import com.google.gwt.event.shared.GwtEvent.Type;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
+import com.gwtplatform.mvp.client.HasUiHandlers;
 import com.gwtplatform.mvp.client.Presenter;
 import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.annotations.ContentSlot;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
+import com.gwtplatform.mvp.client.proxy.PlaceRequest;
 import com.gwtplatform.mvp.client.proxy.Proxy;
 import com.gwtplatform.mvp.client.proxy.RevealContentHandler;
+import com.ootb.client.place.PlaceManager;
 
-public class ApplicationPresenter extends Presenter<ApplicationPresenter.MyView, ApplicationPresenter.MyProxy> {
-    public interface MyView extends View {
+public class ApplicationPresenter extends Presenter<ApplicationPresenter.MyView, ApplicationPresenter.MyProxy>
+	implements ApplicationUiHandlers {
+    public interface MyView extends View, HasUiHandlers<ApplicationUiHandlers> {
     }
 
     @ContentSlot
@@ -40,5 +44,15 @@ public class ApplicationPresenter extends Presenter<ApplicationPresenter.MyView,
     @Inject
     public ApplicationPresenter(EventBus eventBus, MyView view, MyProxy proxy) {
         super(eventBus, view, proxy, RevealType.Root);
+        view.setUiHandlers(this);
     }
+
+	@Override
+	public void Goto(String place) {
+		// TODO: where is PlaceManage?
+		if( place == null )
+			PlaceManager.placeManager.revealDefaultPlace();
+		else
+			PlaceManager.placeManager.revealPlace(new PlaceRequest(place));
+	}
 }

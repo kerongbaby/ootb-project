@@ -16,17 +16,8 @@
 
 package com.ootb.client.application;
 
-import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
-import com.ootb.client.application.deliveryInfo.DeliveryInfoModule;
-import com.ootb.client.application.home.HomeModule;
+import com.gwtplatform.mvp.client.UiHandlers;
 
-public class ApplicationModule extends AbstractPresenterModule {
-    @Override
-    protected void configure() {
-        install(new HomeModule());
-        install(new DeliveryInfoModule());
-
-        bindPresenter(ApplicationPresenter.class, ApplicationPresenter.MyView.class, ApplicationView.class,
-                ApplicationPresenter.MyProxy.class);
-    }
+public interface ApplicationUiHandlers extends UiHandlers {
+    void Goto(String place);
 }
