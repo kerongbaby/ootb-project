@@ -4,7 +4,14 @@ ootb-project
 #Out-of-the-BOX frame
 
 Out-of-the-BOX Frame
-
+==============
+20130718<br />
+1. BoxEntity是数据实体，该实体在服务端代码存在，在GWT客户端，用BoxEntityProxy来去耦合。而在服务端，用BoxEntityRepo来完成持久化。
+2. BoxRequestFactory
+3. ClientModule完成对RequestFactory的依赖注入
+4. BoxService及其实现BoxServiceImpl
+5. BoxServiceRequest
+==============
 ##Thanks to
 [![Arcbees.com](http://arcbees-ads.appspot.com/ad.png)](http://arcbees.com)
 
