@@ -6,8 +6,7 @@
     <artifactId>ootb-project</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
-    <name>GWTP Requestfactory Spring</name>
-    <description>Basic GWTP application using Requestfactory and Spring using a servlet container</description>
+    <name>Out-of-the-BOX</name>
 
     <properties>
         <!-- client -->
@@ -177,6 +176,13 @@
                     </execution>
                 </executions>
             </plugin>
+			<plugin>
+				<groupId>org.mortbay.jetty</groupId>
+				<artifactId>maven-jetty-plugin</artifactId>
+				<configuration>
+					<webApp>${project.build.directory}/${project.build.finalName}.war</webApp>
+				</configuration>
+			</plugin>
         </plugins>
     </build>
 
@@ -337,5 +343,10 @@
         	<artifactId>mysql-connector-java</artifactId>
         	<version>${mysql-connector.version}</version>
         </dependency>
-    </dependencies>
+        </dependencies>
+    <scm>
+    	<url>git://www.github.com/kerongbaby/ootb-project.git</url>
+    </scm>
+    <url>http://www.risetek.com/ootb/</url>
+    <description>Out of the BOX Frame</description>
 </project>
