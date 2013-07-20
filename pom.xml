@@ -117,6 +117,7 @@
                     <excludes>
                         <exclude>**/*GwtTest.java</exclude>
                     </excludes>
+                    <skipTests>true</skipTests>
                 </configuration>
             </plugin>
 
