@@ -33,6 +33,6 @@ public class BoxServiceImpl implements BoxService {
     @Override
     @Transactional(readOnly = true)
     public List<BoxEntity> loadAll(String searchToken) {
-    	return boxEntityRepo.findByid(Long.valueOf(100));
+    	return boxEntityRepo.findByid(0);
     }
 }

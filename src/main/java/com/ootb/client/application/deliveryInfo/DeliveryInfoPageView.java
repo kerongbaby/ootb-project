@@ -64,7 +64,7 @@ public class DeliveryInfoPageView extends ViewImpl implements DeliveryInfoPagePr
     }
 
     private void initCellTable() {
-        TextColumn<BoxEntityProxy> firstNameColumn = new TextColumn<BoxEntityProxy>() {
+        TextColumn<BoxEntityProxy> id_Column = new TextColumn<BoxEntityProxy>() {
             @Override
             public String getValue(BoxEntityProxy object) {
             	if( object == null)
@@ -72,14 +72,14 @@ public class DeliveryInfoPageView extends ViewImpl implements DeliveryInfoPagePr
                 return object.getId().toString();
             }
         };
-        myTable.addColumn(firstNameColumn, "First name");
+        myTable.addColumn(id_Column, "ID");
 
-        TextColumn<BoxEntityProxy> lastNameColumn = new TextColumn<BoxEntityProxy>() {
+        TextColumn<BoxEntityProxy> device_id_Column = new TextColumn<BoxEntityProxy>() {
             @Override
             public String getValue(BoxEntityProxy object) {
-                return "object.getLastName()";
+                return object.getDevice_id().toString();
             }
         };
-        myTable.addColumn(lastNameColumn, "Last name");
+        myTable.addColumn(device_id_Column, "DeviceID");
     }
 }

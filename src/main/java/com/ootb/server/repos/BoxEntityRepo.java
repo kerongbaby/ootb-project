@@ -23,5 +23,5 @@ import com.ootb.server.box.BoxEntity;
 import java.util.List;
 
 public interface BoxEntityRepo extends JpaRepository<BoxEntity, Long> {
-    List<BoxEntity> findByid(Long id);
+    List<BoxEntity> findByid(Integer id);
 }
