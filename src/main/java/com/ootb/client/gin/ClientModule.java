@@ -45,6 +45,9 @@ public class ClientModule extends AbstractPresenterModule {
 
         bind(MyRequestFactory.class).toProvider(RequestFactoryProvider.class).in(Singleton.class);
         bind(BoxRequestFactory.class).toProvider(BoxRequestFactoryProvider.class).in(Singleton.class);
+
+        // Google Analytics
+        // bindConstant().annotatedWith(GaAccount.class).to(ANALYTICS_ACCOUNT);    
     }
 
     static class RequestFactoryProvider implements Provider<MyRequestFactory> {

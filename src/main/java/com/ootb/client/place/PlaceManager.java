@@ -32,15 +32,10 @@ public class PlaceManager extends PlaceManagerImpl {
         super(eventBus, tokenFormatter);
 
         this.defaultPlaceRequest = new PlaceRequest(defaultPlaceNameToken);
-        placeManager = this;
     }
 
     @Override
     public void revealDefaultPlace() {
         revealPlace(defaultPlaceRequest, false);
     }
-    
-    public static PlaceManager placeManager;
-    
-    
 }

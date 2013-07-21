@@ -24,10 +24,10 @@ import com.gwtplatform.mvp.client.Presenter;
 import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.annotations.ContentSlot;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
+import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.PlaceRequest;
 import com.gwtplatform.mvp.client.proxy.Proxy;
 import com.gwtplatform.mvp.client.proxy.RevealContentHandler;
-import com.ootb.client.place.PlaceManager;
 
 public class ApplicationPresenter extends Presenter<ApplicationPresenter.MyView, ApplicationPresenter.MyProxy>
 	implements ApplicationUiHandlers {
@@ -42,17 +42,18 @@ public class ApplicationPresenter extends Presenter<ApplicationPresenter.MyView,
     }
 
     @Inject
-    public ApplicationPresenter(EventBus eventBus, MyView view, MyProxy proxy) {
+    public ApplicationPresenter(EventBus eventBus, MyView view, MyProxy proxy,PlaceManager placeManager) {
         super(eventBus, view, proxy, RevealType.Root);
         view.setUiHandlers(this);
+        this.placeManager = placeManager;
     }
-
-	@Override
+    
+    private final PlaceManager placeManager;
+    @Override
 	public void Goto(String place) {
-		// TODO: where is PlaceManage?
 		if( place == null )
-			PlaceManager.placeManager.revealDefaultPlace();
+			placeManager.revealDefaultPlace();
 		else
-			PlaceManager.placeManager.revealPlace(new PlaceRequest(place));
+			placeManager.revealPlace(new PlaceRequest(place));
 	}
 }
