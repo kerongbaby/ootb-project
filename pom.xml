@@ -201,6 +201,7 @@
 							<sources>
 								<source>${project.build.directory}/generated-sources/apt</source>
 								<source>${project.build.directory}/generated-sources/gwt</source>
+								<source>${project.build.directory}/generated-sources/mybatis</source>
 							</sources>
 						</configuration>
 					</execution>
