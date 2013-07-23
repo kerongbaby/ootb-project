@@ -36,5 +36,6 @@
 		</javaClientGenerator>
 		
 		<table tableName="box_entity" domainObjectName="BoxEntity" />
+		<table tableName="my_entity" domainObjectName="MyEntity" />
 	</context>
 </generatorConfiguration>

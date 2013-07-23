@@ -16,5 +16,6 @@
 	</environments>
 	<mappers>
 		<mapper resource="com/ootb/mybatis/generator/dao/BoxEntityMapper.xml" />
+		<mapper resource="com/ootb/mybatis/generator/dao/MyEntityMapper.xml" />
 	</mappers>
 </configuration>

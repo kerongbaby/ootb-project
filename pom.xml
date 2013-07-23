@@ -201,7 +201,6 @@
 							<sources>
 								<source>${project.build.directory}/generated-sources/apt</source>
 								<source>${project.build.directory}/generated-sources/gwt</source>
-								<source>${project.build.directory}/generated-sources/mybatis</source>
 							</sources>
 						</configuration>
 					</execution>
@@ -416,7 +415,7 @@
 								</goals>
 								<configuration>
 									<configurationFile>src/main/resources/mybatis/mysqlGeneratorConfig.xml</configurationFile>
-									<outputDirectory>target/generated-sources/mybatis</outputDirectory>
+									<outputDirectory>${dao.target.dir}</outputDirectory>
 									<overwrite>true</overwrite>
 									<verbose>true</verbose>
 								</configuration>

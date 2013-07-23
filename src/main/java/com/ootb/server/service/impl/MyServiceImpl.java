@@ -26,11 +26,16 @@ import com.ootb.server.service.MyService;
 
 import java.util.List;
 
+import com.ootb.mybatis.generator.dao.MyEntityMapper;
+
 @Service("myService")
 @Transactional
 public class MyServiceImpl implements MyService {
     @Autowired
     private MyEntityRepo myEntityRepo;
+    
+    @Autowired
+    private MyEntityMapper mapper;
 
     @Override
     public void create(MyEntity entity) {
