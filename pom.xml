@@ -415,6 +415,7 @@
 								</goals>
 								<configuration>
 									<configurationFile>src/main/resources/mybatis/mysqlGeneratorConfig.xml</configurationFile>
+									<outputDirectory>target/generated-sources/mybatis</outputDirectory>
 									<overwrite>true</overwrite>
 									<verbose>true</verbose>
 								</configuration>

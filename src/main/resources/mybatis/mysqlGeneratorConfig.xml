@@ -5,6 +5,10 @@
 
 <generatorConfiguration>
 	<context id="mysqlTables" targetRuntime="MyBatis3">
+		<commentGenerator>
+			<property name="suppressDate" value="true" />
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
 		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
 			connectionURL="jdbc:mysql://www.risetek.com/sdy_database" userId="wangyc" password="Risetek" />
 
