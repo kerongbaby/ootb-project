@@ -45,13 +45,11 @@
 	
 	<!-- scan for mappers and let them be autowired -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.ootb.server.persistence" />
+        <property name="basePackage" value="com.ootb.mybatis.generator.dao" />
     </bean>
 	
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
-        <property name="typeAliasesPackage" value="com.ootb.server.persistence" />
-        <property name="configLocation" value="WEB-INF/classes/META-INF/mybatisConfig.xml" />
     </bean>
 	
 	<context:property-placeholder location="classpath*:META-INF/${profiles.active}.properties"/>
