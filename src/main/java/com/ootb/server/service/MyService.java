@@ -18,7 +18,7 @@ package com.ootb.server.service;
 
 import java.util.List;
 
-import com.ootb.server.business.MyEntity;
+import com.ootb.mybatis.generator.model.MyEntity;
 
 public interface MyService {
     void create(MyEntity entity);

@@ -18,6 +18,8 @@ package com.ootb.server.box;
 
 import java.util.List;
 
+import com.ootb.mybatis.generator.model.BoxEntity;
+
 public interface BoxService {
     List<BoxEntity> loadAll(String searchToken);
 }

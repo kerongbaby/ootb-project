@@ -20,37 +20,34 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.ootb.server.business.MyEntity;
-import com.ootb.server.repos.MyEntityRepo;
+import com.ootb.mybatis.generator.dao.MyEntityMapper;
+import com.ootb.mybatis.generator.model.MyEntity;
+import com.ootb.mybatis.generator.model.MyEntityExample;
 import com.ootb.server.service.MyService;
 
 import java.util.List;
-
-import com.ootb.mybatis.generator.dao.MyEntityMapper;
 
 @Service("myService")
 @Transactional
 public class MyServiceImpl implements MyService {
     @Autowired
-    private MyEntityRepo myEntityRepo;
-    
-    @Autowired
     private MyEntityMapper mapper;
 
     @Override
     public void create(MyEntity entity) {
-        myEntityRepo.save(entity);
+        mapper.insert(entity);
     }
 
     @Override
     public void delete(MyEntity entity) {
-        myEntityRepo.delete(entity);
+    	MyEntityExample ex = new MyEntityExample();
+    	mapper.deleteByExample(ex);
     }
 
     @Override
     @Transactional(readOnly = true)
     public List<MyEntity> loadAll(String searchToken) {
-        String token = searchToken + "%";
-        return myEntityRepo.findByFirstNameLikeOrLastNameLike(token, token);
+    	MyEntityExample ex = new MyEntityExample();
+    	return mapper.selectByExample(ex);
     }
 }

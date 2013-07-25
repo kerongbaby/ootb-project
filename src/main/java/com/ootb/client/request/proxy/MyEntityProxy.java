@@ -16,7 +16,7 @@
 
 package com.ootb.client.request.proxy;
 
-import com.ootb.server.business.MyEntity;
+import com.ootb.mybatis.generator.model.MyEntity;
 import com.google.web.bindery.requestfactory.shared.ProxyFor;
 import com.google.web.bindery.requestfactory.shared.ValueProxy;
 

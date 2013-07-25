@@ -20,7 +20,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.ootb.server.repos.BoxEntityRepo;
+import com.ootb.mybatis.generator.dao.BoxEntityMapper;
+import com.ootb.mybatis.generator.model.BoxEntity;
+import com.ootb.mybatis.generator.model.BoxEntityExample;
 
 import java.util.List;
 
@@ -28,11 +30,12 @@ import java.util.List;
 @Transactional
 public class BoxServiceImpl implements BoxService {
     @Autowired
-    private BoxEntityRepo boxEntityRepo;
+    private BoxEntityMapper mapper;
 
     @Override
     @Transactional(readOnly = true)
     public List<BoxEntity> loadAll(String searchToken) {
-    	return boxEntityRepo.findByid(0);
+    	BoxEntityExample ex = new BoxEntityExample();
+    	return mapper.selectByExample(ex);
     }
 }

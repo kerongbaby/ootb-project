@@ -77,7 +77,7 @@ public class DeliveryInfoPageView extends ViewImpl implements DeliveryInfoPagePr
         TextColumn<BoxEntityProxy> device_id_Column = new TextColumn<BoxEntityProxy>() {
             @Override
             public String getValue(BoxEntityProxy object) {
-                return object.getDevice_id().toString();
+                return object.getDeliveryId().toString();
             }
         };
         myTable.addColumn(device_id_Column, "DeviceID");
