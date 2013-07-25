@@ -410,6 +410,7 @@
 						<executions>
 							<execution>
 								<id>Generate MyBatis Artifacts</id>
+								<phase>initialize</phase>
 								<goals>
 									<goal>generate</goal>
 								</goals>
