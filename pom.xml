@@ -104,6 +104,13 @@
 								<include>**/web.xml</include>
 							</includes>
 						</resource>
+						<resource>
+							<targetPath>WEB-INF/classes/com/ootb/mybatis/generator/dao</targetPath>
+							<directory>src/main/java/com/ootb/mybatis/generator/dao</directory>
+							<includes>
+								<include>*.xml</include>
+							</includes>
+						</resource>
 					</webResources>
 					<warSourceDirectory>src/main/webapp</warSourceDirectory>
 					<webXml>src/main/webapp/WEB-INF/web.xml</webXml>

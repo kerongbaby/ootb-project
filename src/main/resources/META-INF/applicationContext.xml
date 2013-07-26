@@ -17,10 +17,10 @@
     <!-- EntityManager integration with DBCP datasource -->
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <property name="jpaVendorAdapter">
+<!--         <property name="jpaVendorAdapter">
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
         </property>
-    </bean>
+ -->    </bean>
 
     <!-- EntityManager Transaction manager -->
     <bean class="org.springframework.orm.jpa.JpaTransactionManager" id="transactionManager">
@@ -34,7 +34,7 @@
     <jpa:repositories base-package="com.ootb.server.repos" repository-impl-postfix="Impl"/>
 
     <!-- DEV Datasource configuration -->
-    <jdbc:embedded-database id="dataSource" type="HSQL"/>
+    <!-- <jdbc:embedded-database id="dataSource" type="HSQL"/> -->
 	<bean name="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="${jdbc.driverClassName}" />
