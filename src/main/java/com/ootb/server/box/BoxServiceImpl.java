@@ -36,10 +36,10 @@ public class BoxServiceImpl implements BoxService {
     @Transactional(readOnly = true)
     public List<BoxEntity> loadAll(String searchToken) {
     	BoxEntityExample ex = new BoxEntityExample();
-    	ex.or().andDeliveryIdBetween(0, 1);
-    	System.out.println("Debug>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
-    	int total = mapper.countByExample(ex);
-    	System.out.println("we have total: " + total +" items");
+    	//ex.or().andDeliveryIdBetween(0, 1);
+    	//System.out.println("Debug>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+    	//int total = mapper.countByExample(ex);
+    	//System.out.println("we have total: " + total +" items");
     	return mapper.selectByExample(ex);
     }
 }

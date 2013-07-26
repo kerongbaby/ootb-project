@@ -81,5 +81,66 @@ public class DeliveryInfoPageView extends ViewImpl implements DeliveryInfoPagePr
             }
         };
         myTable.addColumn(device_id_Column, "DeviceID");
+
+        TextColumn<BoxEntityProxy> delivery_id_Column = new TextColumn<BoxEntityProxy>() {
+            @Override
+            public String getValue(BoxEntityProxy object) {
+                return object.getDeliveryId().toString();
+            }
+        };
+        myTable.addColumn(delivery_id_Column, "DeliveryID");
+    
+        TextColumn<BoxEntityProxy> sendMan_Column = new TextColumn<BoxEntityProxy>() {
+            @Override
+            public String getValue(BoxEntityProxy object) {
+                return object.getSendMan().toString();
+            }
+        };
+        myTable.addColumn(sendMan_Column, "Sender");
+
+        TextColumn<BoxEntityProxy> sendCompany_Column = new TextColumn<BoxEntityProxy>() {
+            @Override
+            public String getValue(BoxEntityProxy object) {
+                return object.getSendCompany().toString();
+            }
+        };
+        myTable.addColumn(sendCompany_Column, "Sender Unit");
+    
+        TextColumn<BoxEntityProxy> sendTime_Column = new TextColumn<BoxEntityProxy>() {
+            @Override
+            public String getValue(BoxEntityProxy object) {
+                return object.getSendTime().toGMTString();
+            }
+        };
+        myTable.addColumn(sendTime_Column, "DateTime");
+
+        TextColumn<BoxEntityProxy> clientTel_Column = new TextColumn<BoxEntityProxy>() {
+            @Override
+            public String getValue(BoxEntityProxy object) {
+                return object.getClientTel();
+            }
+        };
+        myTable.addColumn(clientTel_Column, "clientTel");
+
+        TextColumn<BoxEntityProxy> notifyDate_Column = new TextColumn<BoxEntityProxy>() {
+            @Override
+            public String getValue(BoxEntityProxy object) {
+            	try {
+            		return object.getNotifyDate().toGMTString();
+            	}catch(Exception ex) {
+            		return "no data";
+            	}
+            }
+        };
+        myTable.addColumn(notifyDate_Column, "notifyDate");
+
+        TextColumn<BoxEntityProxy> barCode_Column = new TextColumn<BoxEntityProxy>() {
+            @Override
+            public String getValue(BoxEntityProxy object) {
+                return object.getBarCode();
+            }
+        };
+        myTable.addColumn(barCode_Column, "barCode");
+    
     }
 }

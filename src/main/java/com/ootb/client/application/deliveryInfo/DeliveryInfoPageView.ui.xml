@@ -8,7 +8,7 @@
 				<g:Button ui:field="submit" text="Submit" />
 			</g:HTMLPanel>
 		</g:center>
-		<g:south size="200">
+		<g:south size="20">
 		<g:SimplePanel>
 		<g:HTML>Hello Out-of-the-BOX</g:HTML>
 		</g:SimplePanel>
