@@ -61,6 +61,7 @@
 		
 		<!-- myBatis -->
 		<dao.target.dir>src/main/java</dao.target.dir>
+		<mybatis-generator-maven-plugin.version>1.3.2</mybatis-generator-maven-plugin.version>
 	</properties>
 
 	<build>
@@ -412,7 +413,7 @@
 					<plugin>
 						<groupId>org.mybatis.generator</groupId>
 						<artifactId>mybatis-generator-maven-plugin</artifactId>
-						<version>1.3.2</version>
+						<version>${mybatis-generator-maven-plugin.version}</version>
 						<!-- 自动生成 -->
 						<executions>
 							<execution>

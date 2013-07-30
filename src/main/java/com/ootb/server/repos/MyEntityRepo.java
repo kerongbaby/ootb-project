@@ -14,29 +14,14 @@
  * the License.
  */
 
-package com.ootb.client.request.proxy;
+package com.ootb.server.repos;
+
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.ootb.server.business.MyEntity;
-import com.google.web.bindery.requestfactory.shared.ProxyFor;
-import com.google.web.bindery.requestfactory.shared.ValueProxy;
 
-import java.util.Date;
+import java.util.List;
 
-@ProxyFor(value = MyEntity.class)
-public interface MyEntityProxy extends ValueProxy {
-    Long getId();
-
-    void setId(Long id);
-
-    String getFirstName();
-
-    void setFirstName(String firstName);
-
-    String getLastName();
-
-    void setLastName(String lastName);
-
-    Date getCreated();
-
-    void setCreated(Date created);
+public interface MyEntityRepo extends JpaRepository<MyEntity, Long> {
+    List<MyEntity> findByFirstNameLikeOrLastNameLike(String firstName, String lastName);
 }
