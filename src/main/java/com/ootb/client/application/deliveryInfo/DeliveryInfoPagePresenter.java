@@ -21,6 +21,7 @@ import java.util.List;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.google.web.bindery.requestfactory.shared.Receiver;
+import com.gwtplatform.mvp.client.HasUiHandlers;
 import com.gwtplatform.mvp.client.Presenter;
 import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.annotations.NameToken;
@@ -29,11 +30,11 @@ import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 import com.ootb.client.application.ApplicationPresenter;
 import com.ootb.client.box.request.BoxEntityProxy;
 import com.ootb.client.box.request.BoxRequestFactory;
-import com.ootb.client.box.request.BoxServiceRequest;
 import com.ootb.client.place.NameTokens;
 
-public class DeliveryInfoPagePresenter extends Presenter<DeliveryInfoPagePresenter.MyView, DeliveryInfoPagePresenter.MyProxy> {
-    public interface MyView extends View {
+public class DeliveryInfoPagePresenter extends Presenter<DeliveryInfoPagePresenter.MyView, DeliveryInfoPagePresenter.MyProxy>
+	implements DeliveryInfoUiHandlers {
+    public interface MyView extends View, HasUiHandlers<DeliveryInfoUiHandlers>{
         void setData(List<BoxEntityProxy> data);
     }
 
@@ -44,33 +45,51 @@ public class DeliveryInfoPagePresenter extends Presenter<DeliveryInfoPagePresent
 
     private final BoxRequestFactory requestFactory;
 
-    private BoxServiceRequest currentContext;
-    private String searchToken;
-
     @Inject
     public DeliveryInfoPagePresenter(final EventBus eventBus, final MyView view, final MyProxy proxy,
             final BoxRequestFactory requestFactory) {
         super(eventBus, view, proxy, ApplicationPresenter.TYPE_SetMainContent);
+        view.setUiHandlers(this);
         this.requestFactory = requestFactory;
     }
 
     @Override
     protected void onReveal() {
-        searchToken = "";
-        initializeContext();
         loadEntities();
     }
 
-    private void initializeContext() {
-        currentContext = requestFactory.boxService();
-    }
-
     private void loadEntities() {
-        requestFactory.boxService().loadAll(searchToken).fire(new Receiver<List<BoxEntityProxy>>() {
+        requestFactory.boxService().loadAll(offset, limit).fire(new Receiver<List<BoxEntityProxy>>() {
             @Override
             public void onSuccess(List<BoxEntityProxy> data) {
+            	if( data.size() < limit ) {
+            		offset -= data.size();
+            		if(offset < 0 )
+            			offset = 0;
+            	}
                 getView().setData(data);
             }
         });
     }
+
+    private int offset = 0;
+    private final int limit = 10;
+	@Override
+	public void goPrev() {
+		System.out.println("go");
+		offset -= limit;
+		if(offset < 0 )
+			offset = 0;
+	}
+
+	@Override
+	public void goNext() {
+		offset += limit;
+	}
+
+	@Override
+	public void refresh() {
+		System.out.println("ref!");
+		loadEntities();
+	}
 }

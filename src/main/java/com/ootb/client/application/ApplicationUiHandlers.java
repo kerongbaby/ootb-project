@@ -18,6 +18,6 @@ package com.ootb.client.application;
 
 import com.gwtplatform.mvp.client.UiHandlers;
 
-public interface ApplicationUiHandlers extends UiHandlers {
+interface ApplicationUiHandlers extends UiHandlers {
     void Goto(String place);
 }

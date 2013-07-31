@@ -21,5 +21,5 @@ import java.util.List;
 import com.ootb.mybatis.generator.model.BoxEntity;
 
 public interface BoxService {
-    List<BoxEntity> loadAll(String searchToken);
+    List<BoxEntity> loadAll(int offset, int limit);
 }

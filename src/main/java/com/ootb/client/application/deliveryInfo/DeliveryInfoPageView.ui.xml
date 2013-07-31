@@ -5,7 +5,8 @@
 		<g:center>
 			<g:HTMLPanel>
 				<cell:CellTable ui:field="myTable" />
-				<g:Button ui:field="submit" text="Submit" />
+				<g:Button ui:field="prev" text="Prev" />
+				<g:Button ui:field="next" text="Next" />
 			</g:HTMLPanel>
 		</g:center>
 		<g:south size="20">

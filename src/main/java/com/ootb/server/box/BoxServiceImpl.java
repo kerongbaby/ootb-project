@@ -35,12 +35,12 @@ public class BoxServiceImpl implements BoxService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<BoxEntity> loadAll(String searchToken) {
+    public List<BoxEntity> loadAll(int offset, int limit) {
     	BoxEntityExample ex = new BoxEntityExample();
     	//ex.or().andDeliveryIdBetween(0, 1);
     	//System.out.println("Debug>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
     	//int total = mapper.countByExample(ex);
     	//System.out.println("we have total: " + total +" items");
-    	return mapper.selectByExampleWithRowbounds(ex, new RowBounds(10,10));
+    	return mapper.selectByExampleWithRowbounds(ex, new RowBounds(offset,limit));
     }
 }

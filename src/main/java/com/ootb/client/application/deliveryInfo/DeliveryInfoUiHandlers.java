@@ -14,17 +14,12 @@
  * the License.
  */
 
-package com.ootb.client.box.request;
+package com.ootb.client.application.deliveryInfo;
 
-import java.util.List;
+import com.gwtplatform.mvp.client.UiHandlers;
 
-import com.google.web.bindery.requestfactory.shared.Request;
-import com.google.web.bindery.requestfactory.shared.RequestContext;
-import com.google.web.bindery.requestfactory.shared.Service;
-import com.ootb.server.box.BoxServiceImpl;
-import com.ootb.server.util.SpringServiceLocator;
-
-@Service(value = BoxServiceImpl.class, locator = SpringServiceLocator.class)
-public interface BoxServiceRequest extends RequestContext {
-    abstract Request<List<BoxEntityProxy>> loadAll(int offset, int limit);
+interface DeliveryInfoUiHandlers extends UiHandlers {
+    void goPrev();
+    void goNext();
+    void refresh();
 }
