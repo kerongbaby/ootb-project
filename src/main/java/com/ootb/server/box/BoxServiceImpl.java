@@ -16,6 +16,7 @@
 
 package com.ootb.server.box;
 
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -40,6 +41,6 @@ public class BoxServiceImpl implements BoxService {
     	//System.out.println("Debug>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
     	//int total = mapper.countByExample(ex);
     	//System.out.println("we have total: " + total +" items");
-    	return mapper.selectByExample(ex);
+    	return mapper.selectByExampleWithRowbounds(ex, new RowBounds(10,10));
     }
 }
