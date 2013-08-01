@@ -19,12 +19,12 @@ package com.ootb.client.application.deliveryInfo;
 import java.util.List;
 
 import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.cellview.client.CellTable;
 import com.google.gwt.user.cellview.client.TextColumn;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.view.client.ListDataProvider;
 import com.google.inject.Inject;
@@ -34,12 +34,14 @@ import com.ootb.client.box.request.BoxEntityProxy;
 public class DeliveryInfoPageView extends ViewWithUiHandlers<DeliveryInfoUiHandlers> implements DeliveryInfoPagePresenter.MyView {
     public interface Binder extends UiBinder<Widget, DeliveryInfoPageView> {
     }
-
+    
     @UiField(provided = true)
     CellTable<BoxEntityProxy> myTable;
 
     private final ListDataProvider<BoxEntityProxy> dataProvider;
 
+    private final DateTimeFormat dateformat = DateTimeFormat.getFormat("yyyy-MM-dd HH:mm:ss");
+    
     @Inject
     public DeliveryInfoPageView(final Binder uiBinder,
             final ListDataProvider<BoxEntityProxy> dataProvider) {
@@ -72,7 +74,6 @@ public class DeliveryInfoPageView extends ViewWithUiHandlers<DeliveryInfoUiHandl
     	getUiHandlers().refresh();
     }
     
-    
     private void initCellTable() {
         TextColumn<BoxEntityProxy> id_Column = new TextColumn<BoxEntityProxy>() {
             @Override
@@ -87,7 +88,7 @@ public class DeliveryInfoPageView extends ViewWithUiHandlers<DeliveryInfoUiHandl
         TextColumn<BoxEntityProxy> device_id_Column = new TextColumn<BoxEntityProxy>() {
             @Override
             public String getValue(BoxEntityProxy object) {
-                return object.getDeliveryId().toString();
+                return object.getDeviceId().toString();
             }
         };
         myTable.addColumn(device_id_Column, "DeviceID");
@@ -116,30 +117,45 @@ public class DeliveryInfoPageView extends ViewWithUiHandlers<DeliveryInfoUiHandl
         };
         myTable.addColumn(sendCompany_Column, "Sender Unit");
     
+        
         TextColumn<BoxEntityProxy> sendTime_Column = new TextColumn<BoxEntityProxy>() {
             @Override
             public String getValue(BoxEntityProxy object) {
-                return object.getSendTime().toGMTString();
+            	if( object == null || object.getSendTime() == null)
+            		return "no date";
+            	return dateformat.format(object.getSendTime());
             }
         };
         myTable.addColumn(sendTime_Column, "DateTime");
 
-        TextColumn<BoxEntityProxy> clientTel_Column = new TextColumn<BoxEntityProxy>() {
+        
+/*
+         TextColumn<BoxEntityProxy> clientTel_Column = new TextColumn<BoxEntityProxy>() {
             @Override
             public String getValue(BoxEntityProxy object) {
                 return object.getClientTel();
             }
         };
         myTable.addColumn(clientTel_Column, "clientTel");
-
+*/
+        
+        TextColumn<BoxEntityProxy> ExpressStatus_Column = new TextColumn<BoxEntityProxy>() {
+            @Override
+            public String getValue(BoxEntityProxy object) {
+            	if( object == null )
+            		return "no data";
+            	return object.getExpressStatus().toString();
+            }
+        };
+        myTable.addColumn(ExpressStatus_Column, "ExpressStatus");
+        
+        
         TextColumn<BoxEntityProxy> notifyDate_Column = new TextColumn<BoxEntityProxy>() {
             @Override
             public String getValue(BoxEntityProxy object) {
-            	try {
-            		return object.getNotifyDate().toGMTString();
-            	}catch(Exception ex) {
-            		return "no data";
-            	}
+            	if( object == null || object.getNotifyDate() == null)
+            		return "no date";
+            	return dateformat.format(object.getNotifyDate());
             }
         };
         myTable.addColumn(notifyDate_Column, "notifyDate");

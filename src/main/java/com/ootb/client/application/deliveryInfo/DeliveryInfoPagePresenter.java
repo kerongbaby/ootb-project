@@ -73,7 +73,7 @@ public class DeliveryInfoPagePresenter extends Presenter<DeliveryInfoPagePresent
     }
 
     private int offset = 0;
-    private final int limit = 10;
+    private final int limit = 14;
 	@Override
 	public void goPrev() {
 		System.out.println("go");
@@ -89,7 +89,6 @@ public class DeliveryInfoPagePresenter extends Presenter<DeliveryInfoPagePresent
 
 	@Override
 	public void refresh() {
-		System.out.println("ref!");
 		loadEntities();
 	}
 }
