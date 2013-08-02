@@ -88,6 +88,11 @@ public class DeliveryInfoPagePresenter extends Presenter<DeliveryInfoPagePresent
 	}
 
 	@Override
+	public void goLast() {
+		offset = 0;
+	}
+	
+	@Override
 	public void refresh() {
 		loadEntities();
 	}

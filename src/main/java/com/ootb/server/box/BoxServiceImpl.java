@@ -41,6 +41,7 @@ public class BoxServiceImpl implements BoxService {
     	//System.out.println("Debug>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
     	//int total = mapper.countByExample(ex);
     	//System.out.println("we have total: " + total +" items");
+    	ex.setOrderByClause("ID DESC");
     	return mapper.selectByExampleWithRowbounds(ex, new RowBounds(offset,limit));
     }
 }

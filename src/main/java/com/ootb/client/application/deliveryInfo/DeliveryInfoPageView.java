@@ -73,6 +73,18 @@ public class DeliveryInfoPageView extends ViewWithUiHandlers<DeliveryInfoUiHandl
     	getUiHandlers().goNext();
     	getUiHandlers().refresh();
     }
+
+    @UiHandler("refresh")
+    void onRefreshClicked(ClickEvent event) {
+    	getUiHandlers().refresh();
+    }
+
+    @UiHandler("newer")
+    void onNewerClicked(ClickEvent event) {
+    	getUiHandlers().goLast();
+    	getUiHandlers().refresh();
+    }
+    
     
     private void initCellTable() {
         TextColumn<BoxEntityProxy> id_Column = new TextColumn<BoxEntityProxy>() {

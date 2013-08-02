@@ -21,5 +21,6 @@ import com.gwtplatform.mvp.client.UiHandlers;
 interface DeliveryInfoUiHandlers extends UiHandlers {
     void goPrev();
     void goNext();
+    void goLast();
     void refresh();
 }
