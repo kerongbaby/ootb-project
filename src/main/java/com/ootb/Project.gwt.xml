@@ -9,7 +9,8 @@
     <inherits name='com.google.gwt.resources.Resources'/>
     <inherits name='com.google.gwt.editor.Editor'/>
     <inherits name='com.google.gwt.text.Text'/>
-
+	<inherits name='org.fusesource.restygwt.RestyGWT' />
+	
     <!-- Default css -->
     <inherits name='com.google.gwt.user.theme.standard.Standard'/>
     <!-- <inherits name='com.google.gwt.user.theme.chrome.Chrome'/> -->
