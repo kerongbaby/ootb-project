@@ -14,14 +14,13 @@
  * the License.
  */
 
-package com.ootb.client.place;
+package com.ootb.client.application.sms;
 
-public class NameTokens {
-    public static final String home = "home";
-    public static final String deliveryInfo = "deliveryinfo";
-    public static final String sms = "sms";
+import com.gwtplatform.mvp.client.UiHandlers;
 
-    public static String getHome() {
-        return home;
-    }
+interface OotbUiHandlers extends UiHandlers {
+    void goPrev();
+    void goNext();
+    void goLast();
+    void refresh();
 }

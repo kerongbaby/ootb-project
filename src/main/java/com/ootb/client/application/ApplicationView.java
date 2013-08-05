@@ -60,6 +60,13 @@ public class ApplicationView extends ViewWithUiHandlers<ApplicationUiHandlers> i
     void onSubmitClicked(ClickEvent event) {
     	getUiHandlers().Goto(NameTokens.deliveryInfo);
     }
+
+    @UiField
+    Button SmsButton;
+    @UiHandler("SmsButton")
+    void onSmsButtonClicked(ClickEvent event) {
+    	getUiHandlers().Goto(NameTokens.sms);
+    }
     
     @UiField
     Button homeButton;

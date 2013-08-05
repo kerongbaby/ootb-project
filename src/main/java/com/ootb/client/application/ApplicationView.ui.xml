@@ -39,6 +39,8 @@
 				</g:Button>
 				<g:Button ui:field="homeButton" width="200px" height="100%">Home
 				</g:Button>
+				<g:Button ui:field="SmsButton" width="200px" height="100%">Sms
+				</g:Button>
 			</g:HorizontalPanel>
 		</g:north>
 		<g:center>

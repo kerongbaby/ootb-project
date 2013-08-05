@@ -1,0 +1,20 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+	xmlns:g='urn:import:com.google.gwt.user.client.ui' xmlns:cell='urn:import:com.google.gwt.user.cellview.client'
+	xmlns:s='urn:import:com.ootb.client.application.home.ui'>
+	<g:DockLayoutPanel>
+		<g:center>
+			<g:HTMLPanel>
+				<cell:CellTable ui:field="myTable" />
+				<g:Button ui:field="prev" text="Prev" />
+				<g:Button ui:field="next" text="Next" />
+				<g:Button ui:field="refresh" text="Refresh" />
+				<g:Button ui:field="newer" text="Newer" />
+			</g:HTMLPanel>
+		</g:center>
+		<g:south size="20">
+		<g:SimplePanel>
+		<g:HTML>Hello Out-of-the-BOX[SMS]</g:HTML>
+		</g:SimplePanel>
+		</g:south>
+	</g:DockLayoutPanel>
+</ui:UiBinder>
