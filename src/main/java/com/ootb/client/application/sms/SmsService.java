@@ -9,6 +9,6 @@ import org.fusesource.restygwt.client.RestService;
 
 public interface SmsService extends RestService {
 	@GET
-	@Path("sms/{limit}/{offset}/")
+	@Path("rest/sms/{limit}/{offset}/")
 	public void getSMS(@PathParam("limit") int limit,  @PathParam("offset") int offset, MethodCallback<String> callback);
 }

@@ -61,10 +61,11 @@ public class OotbPresenter extends Presenter<OotbPresenter.MyView, OotbPresenter
 
     private void loadEntities() {
     	SmsService service = GWT.create(SmsService.class);
-    	Resource resource = new Resource( GWT.getModuleBaseURL() );
+//    	Resource resource = new Resource( GWT.getModuleBaseURL() );
+    	Resource resource = new Resource( GWT.getHostPageBaseURL());
     	((RestServiceProxy)service).setResource(resource);
     	
-    	service.getSMS(10, 0, new MethodCallback<String>(){
+    	service.getSMS(limit, offset, new MethodCallback<String>(){
 
 			@Override
 			public void onFailure(Method method, Throwable exception) {
