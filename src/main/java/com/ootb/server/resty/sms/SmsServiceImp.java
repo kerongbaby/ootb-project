@@ -3,6 +3,7 @@ package com.ootb.server.resty.sms;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.ws.rs.core.MediaType;
 
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,7 @@ public class SmsServiceImp  {
     @Autowired
     private BoxEntityMapper mapper;
 
-	@RequestMapping(value = "sms/{limit}/{offset}", method = RequestMethod.GET, produces = "application/json")
+	@RequestMapping(value = "sms/{limit}/{offset}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON)
 	@ResponseBody
     @Transactional(readOnly = true)
 	public List<BoxEntity> getSMS(@PathVariable int limit, @PathVariable int offset,
