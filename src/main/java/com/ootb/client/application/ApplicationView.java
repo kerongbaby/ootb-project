@@ -62,17 +62,16 @@ public class ApplicationView extends ViewWithUiHandlers<ApplicationUiHandlers> i
     }
 
     @UiField
-    Button SmsButton;
-    @UiHandler("SmsButton")
-    void onSmsButtonClicked(ClickEvent event) {
-    	getUiHandlers().Goto(NameTokens.sms);
+    Button restDispatchButton;
+    @UiHandler("restDispatchButton")
+    void onRestDispatchButtonClicked(ClickEvent event) {
+    	getUiHandlers().Goto(NameTokens.restDispatch);
     }
-    
+
     @UiField
     Button homeButton;
     @UiHandler("homeButton")
     void onHomeButtonClicked(ClickEvent event) {
     	getUiHandlers().Goto(null);
     }
-    
 }

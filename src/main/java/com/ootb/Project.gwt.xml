@@ -9,7 +9,7 @@
     <inherits name='com.google.gwt.resources.Resources'/>
     <inherits name='com.google.gwt.editor.Editor'/>
     <inherits name='com.google.gwt.text.Text'/>
-	<inherits name='org.fusesource.restygwt.RestyGWT' />
+    <inherits name="com.gwtplatform.dispatch.DispatchRest"/>
 	<inherits name="com.google.web.bindery.autobean.AutoBean"/>
 	
     <!-- Default css -->
@@ -23,5 +23,6 @@
     <source path='client' />
     <source path='shared' />
 
+    <!-- <set-configuration-property name="gin.ginjector.modules" value="com.ootb.client.gin.ClientModule"/> -->
     <set-configuration-property name="gin.ginjector.modules" value="com.ootb.client.gin.ClientModule"/>
 </module>

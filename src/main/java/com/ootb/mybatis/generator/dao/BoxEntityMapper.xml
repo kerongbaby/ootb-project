@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ootb.mybatis.generator.dao.BoxEntityMapper" >
+  <resultMap id="BaseResultMap" type="com.ootb.mybatis.generator.model.BoxEntity" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="device_id" property="deviceId" jdbcType="INTEGER" />
+    <result column="delivery_id" property="deliveryId" jdbcType="INTEGER" />
+    <result column="send_man" property="sendMan" jdbcType="VARCHAR" />
+    <result column="send_company" property="sendCompany" jdbcType="VARCHAR" />
+    <result column="send_tel" property="sendTel" jdbcType="VARCHAR" />
+    <result column="send_time" property="sendTime" jdbcType="TIMESTAMP" />
+    <result column="box_order_id" property="boxOrderId" jdbcType="INTEGER" />
+    <result column="client_tel" property="clientTel" jdbcType="VARCHAR" />
+    <result column="bar_code" property="barCode" jdbcType="VARCHAR" />
+    <result column="tack_pin" property="tackPin" jdbcType="VARCHAR" />
+    <result column="tack_time" property="tackTime" jdbcType="TIMESTAMP" />
+    <result column="express_status" property="expressStatus" jdbcType="INTEGER" />
+    <result column="notify_date" property="notifyDate" jdbcType="TIMESTAMP" />
+    <result column="receive_time" property="receiveTime" jdbcType="TIMESTAMP" />
+    <result column="is_check" property="isCheck" jdbcType="INTEGER" />
+    <result column="check_time" property="checkTime" jdbcType="TIMESTAMP" />
+    <result column="serial_number" property="serialNumber" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, device_id, delivery_id, send_man, send_company, send_tel, send_time, box_order_id, 
+    client_tel, bar_code, tack_pin, tack_time, express_status, notify_date, receive_time, 
+    is_check, check_time, serial_number, remark
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ootb.mybatis.generator.model.BoxEntityExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from delivery_info_logs
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from delivery_info_logs
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from delivery_info_logs
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.ootb.mybatis.generator.model.BoxEntityExample" >
+    delete from delivery_info_logs
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.ootb.mybatis.generator.model.BoxEntity" >
+    insert into delivery_info_logs (id, device_id, delivery_id, 
+      send_man, send_company, send_tel, 
+      send_time, box_order_id, client_tel, 
+      bar_code, tack_pin, tack_time, 
+      express_status, notify_date, receive_time, 
+      is_check, check_time, serial_number, 
+      remark)
+    values (#{id,jdbcType=INTEGER}, #{deviceId,jdbcType=INTEGER}, #{deliveryId,jdbcType=INTEGER}, 
+      #{sendMan,jdbcType=VARCHAR}, #{sendCompany,jdbcType=VARCHAR}, #{sendTel,jdbcType=VARCHAR}, 
+      #{sendTime,jdbcType=TIMESTAMP}, #{boxOrderId,jdbcType=INTEGER}, #{clientTel,jdbcType=VARCHAR}, 
+      #{barCode,jdbcType=VARCHAR}, #{tackPin,jdbcType=VARCHAR}, #{tackTime,jdbcType=TIMESTAMP}, 
+      #{expressStatus,jdbcType=INTEGER}, #{notifyDate,jdbcType=TIMESTAMP}, #{receiveTime,jdbcType=TIMESTAMP}, 
+      #{isCheck,jdbcType=INTEGER}, #{checkTime,jdbcType=TIMESTAMP}, #{serialNumber,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ootb.mybatis.generator.model.BoxEntity" >
+    insert into delivery_info_logs
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="deviceId != null" >
+        device_id,
+      </if>
+      <if test="deliveryId != null" >
+        delivery_id,
+      </if>
+      <if test="sendMan != null" >
+        send_man,
+      </if>
+      <if test="sendCompany != null" >
+        send_company,
+      </if>
+      <if test="sendTel != null" >
+        send_tel,
+      </if>
+      <if test="sendTime != null" >
+        send_time,
+      </if>
+      <if test="boxOrderId != null" >
+        box_order_id,
+      </if>
+      <if test="clientTel != null" >
+        client_tel,
+      </if>
+      <if test="barCode != null" >
+        bar_code,
+      </if>
+      <if test="tackPin != null" >
+        tack_pin,
+      </if>
+      <if test="tackTime != null" >
+        tack_time,
+      </if>
+      <if test="expressStatus != null" >
+        express_status,
+      </if>
+      <if test="notifyDate != null" >
+        notify_date,
+      </if>
+      <if test="receiveTime != null" >
+        receive_time,
+      </if>
+      <if test="isCheck != null" >
+        is_check,
+      </if>
+      <if test="checkTime != null" >
+        check_time,
+      </if>
+      <if test="serialNumber != null" >
+        serial_number,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="deviceId != null" >
+        #{deviceId,jdbcType=INTEGER},
+      </if>
+      <if test="deliveryId != null" >
+        #{deliveryId,jdbcType=INTEGER},
+      </if>
+      <if test="sendMan != null" >
+        #{sendMan,jdbcType=VARCHAR},
+      </if>
+      <if test="sendCompany != null" >
+        #{sendCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="sendTel != null" >
+        #{sendTel,jdbcType=VARCHAR},
+      </if>
+      <if test="sendTime != null" >
+        #{sendTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="boxOrderId != null" >
+        #{boxOrderId,jdbcType=INTEGER},
+      </if>
+      <if test="clientTel != null" >
+        #{clientTel,jdbcType=VARCHAR},
+      </if>
+      <if test="barCode != null" >
+        #{barCode,jdbcType=VARCHAR},
+      </if>
+      <if test="tackPin != null" >
+        #{tackPin,jdbcType=VARCHAR},
+      </if>
+      <if test="tackTime != null" >
+        #{tackTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expressStatus != null" >
+        #{expressStatus,jdbcType=INTEGER},
+      </if>
+      <if test="notifyDate != null" >
+        #{notifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="receiveTime != null" >
+        #{receiveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isCheck != null" >
+        #{isCheck,jdbcType=INTEGER},
+      </if>
+      <if test="checkTime != null" >
+        #{checkTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="serialNumber != null" >
+        #{serialNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.ootb.mybatis.generator.model.BoxEntityExample" resultType="java.lang.Integer" >
+    select count(*) from delivery_info_logs
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update delivery_info_logs
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.deviceId != null" >
+        device_id = #{record.deviceId,jdbcType=INTEGER},
+      </if>
+      <if test="record.deliveryId != null" >
+        delivery_id = #{record.deliveryId,jdbcType=INTEGER},
+      </if>
+      <if test="record.sendMan != null" >
+        send_man = #{record.sendMan,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sendCompany != null" >
+        send_company = #{record.sendCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sendTel != null" >
+        send_tel = #{record.sendTel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sendTime != null" >
+        send_time = #{record.sendTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.boxOrderId != null" >
+        box_order_id = #{record.boxOrderId,jdbcType=INTEGER},
+      </if>
+      <if test="record.clientTel != null" >
+        client_tel = #{record.clientTel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.barCode != null" >
+        bar_code = #{record.barCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tackPin != null" >
+        tack_pin = #{record.tackPin,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tackTime != null" >
+        tack_time = #{record.tackTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.expressStatus != null" >
+        express_status = #{record.expressStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.notifyDate != null" >
+        notify_date = #{record.notifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.receiveTime != null" >
+        receive_time = #{record.receiveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.isCheck != null" >
+        is_check = #{record.isCheck,jdbcType=INTEGER},
+      </if>
+      <if test="record.checkTime != null" >
+        check_time = #{record.checkTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.serialNumber != null" >
+        serial_number = #{record.serialNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark != null" >
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update delivery_info_logs
+    set id = #{record.id,jdbcType=INTEGER},
+      device_id = #{record.deviceId,jdbcType=INTEGER},
+      delivery_id = #{record.deliveryId,jdbcType=INTEGER},
+      send_man = #{record.sendMan,jdbcType=VARCHAR},
+      send_company = #{record.sendCompany,jdbcType=VARCHAR},
+      send_tel = #{record.sendTel,jdbcType=VARCHAR},
+      send_time = #{record.sendTime,jdbcType=TIMESTAMP},
+      box_order_id = #{record.boxOrderId,jdbcType=INTEGER},
+      client_tel = #{record.clientTel,jdbcType=VARCHAR},
+      bar_code = #{record.barCode,jdbcType=VARCHAR},
+      tack_pin = #{record.tackPin,jdbcType=VARCHAR},
+      tack_time = #{record.tackTime,jdbcType=TIMESTAMP},
+      express_status = #{record.expressStatus,jdbcType=INTEGER},
+      notify_date = #{record.notifyDate,jdbcType=TIMESTAMP},
+      receive_time = #{record.receiveTime,jdbcType=TIMESTAMP},
+      is_check = #{record.isCheck,jdbcType=INTEGER},
+      check_time = #{record.checkTime,jdbcType=TIMESTAMP},
+      serial_number = #{record.serialNumber,jdbcType=VARCHAR},
+      remark = #{record.remark,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ootb.mybatis.generator.model.BoxEntity" >
+    update delivery_info_logs
+    <set >
+      <if test="deviceId != null" >
+        device_id = #{deviceId,jdbcType=INTEGER},
+      </if>
+      <if test="deliveryId != null" >
+        delivery_id = #{deliveryId,jdbcType=INTEGER},
+      </if>
+      <if test="sendMan != null" >
+        send_man = #{sendMan,jdbcType=VARCHAR},
+      </if>
+      <if test="sendCompany != null" >
+        send_company = #{sendCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="sendTel != null" >
+        send_tel = #{sendTel,jdbcType=VARCHAR},
+      </if>
+      <if test="sendTime != null" >
+        send_time = #{sendTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="boxOrderId != null" >
+        box_order_id = #{boxOrderId,jdbcType=INTEGER},
+      </if>
+      <if test="clientTel != null" >
+        client_tel = #{clientTel,jdbcType=VARCHAR},
+      </if>
+      <if test="barCode != null" >
+        bar_code = #{barCode,jdbcType=VARCHAR},
+      </if>
+      <if test="tackPin != null" >
+        tack_pin = #{tackPin,jdbcType=VARCHAR},
+      </if>
+      <if test="tackTime != null" >
+        tack_time = #{tackTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expressStatus != null" >
+        express_status = #{expressStatus,jdbcType=INTEGER},
+      </if>
+      <if test="notifyDate != null" >
+        notify_date = #{notifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="receiveTime != null" >
+        receive_time = #{receiveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isCheck != null" >
+        is_check = #{isCheck,jdbcType=INTEGER},
+      </if>
+      <if test="checkTime != null" >
+        check_time = #{checkTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="serialNumber != null" >
+        serial_number = #{serialNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ootb.mybatis.generator.model.BoxEntity" >
+    update delivery_info_logs
+    set device_id = #{deviceId,jdbcType=INTEGER},
+      delivery_id = #{deliveryId,jdbcType=INTEGER},
+      send_man = #{sendMan,jdbcType=VARCHAR},
+      send_company = #{sendCompany,jdbcType=VARCHAR},
+      send_tel = #{sendTel,jdbcType=VARCHAR},
+      send_time = #{sendTime,jdbcType=TIMESTAMP},
+      box_order_id = #{boxOrderId,jdbcType=INTEGER},
+      client_tel = #{clientTel,jdbcType=VARCHAR},
+      bar_code = #{barCode,jdbcType=VARCHAR},
+      tack_pin = #{tackPin,jdbcType=VARCHAR},
+      tack_time = #{tackTime,jdbcType=TIMESTAMP},
+      express_status = #{expressStatus,jdbcType=INTEGER},
+      notify_date = #{notifyDate,jdbcType=TIMESTAMP},
+      receive_time = #{receiveTime,jdbcType=TIMESTAMP},
+      is_check = #{isCheck,jdbcType=INTEGER},
+      check_time = #{checkTime,jdbcType=TIMESTAMP},
+      serial_number = #{serialNumber,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select resultMap="BaseResultMap" parameterType="com.ootb.mybatis.generator.model.BoxEntityExample" id="selectByExampleWithRowbounds" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from delivery_info_logs
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+</mapper>

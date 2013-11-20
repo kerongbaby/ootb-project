@@ -12,7 +12,7 @@
 	<properties>
 		<!-- client -->
 		<gwt.version>2.5.1</gwt.version>
-		<gwtp.version>1.0-RC-3</gwtp.version>
+		<gwtp.version>1.0</gwtp.version>
 		<gin.version>2.0.0</gin.version>
 		<arcbees-core.version>1.0-SNAPSHOT</arcbees-core.version>
 		<gwt.style>OBF</gwt.style>
@@ -64,7 +64,6 @@
 		<mybatis-generator-maven-plugin.version>1.3.2</mybatis-generator-maven-plugin.version>
 
 		<!-- restful & json -->
-		<restygwt.version>1.3.1</restygwt.version>
 		<jsr311-api.version>1.1</jsr311-api.version>
 		<spring-webmvc.version>3.2.3.RELEASE</spring-webmvc.version>
 		<jackson-mapper-asl.version>1.4.2</jackson-mapper-asl.version>
@@ -252,7 +251,18 @@
 			<version>${gwtp.version}</version>
 			<scope>provided</scope>
 		</dependency>
-
+		<dependency>
+			<groupId>com.gwtplatform</groupId>
+			<artifactId>gwtp-dispatch-rest</artifactId>
+			<version>${gwtp.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.gwtplatform</groupId>
+			<artifactId>gwtp-dispatch-client</artifactId>
+			<version>${gwtp.version}</version>
+			<scope>provided</scope>
+		</dependency>
 		<!-- DI dependencies -->
 		<dependency>
 			<groupId>com.google.inject</groupId>
@@ -392,12 +402,6 @@
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis-spring</artifactId>
 			<version>1.2.0</version>
-		</dependency>
-		<dependency>
-			<groupId>org.fusesource.restygwt</groupId>
-			<artifactId>restygwt</artifactId>
-			<version>${restygwt.version}</version>
-			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>javax.ws.rs</groupId>

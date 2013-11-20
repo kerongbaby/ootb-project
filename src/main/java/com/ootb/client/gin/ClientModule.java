@@ -21,6 +21,10 @@ import com.google.inject.Inject;
 import com.google.inject.Provider;
 import com.google.inject.Singleton;
 import com.google.web.bindery.event.shared.EventBus;
+import com.gwtplatform.dispatch.client.gin.RestDispatchAsyncModule;
+import com.gwtplatform.dispatch.client.rest.AbstractSerializerProvider;
+import com.gwtplatform.dispatch.client.rest.RestApplicationPath;
+import com.gwtplatform.dispatch.client.rest.SerializerProvider;
 import com.gwtplatform.mvp.client.annotations.DefaultPlace;
 import com.gwtplatform.mvp.client.annotations.ErrorPlace;
 import com.gwtplatform.mvp.client.annotations.UnauthorizedPlace;
@@ -47,9 +51,22 @@ public class ClientModule extends AbstractPresenterModule {
         bind(BoxRequestFactory.class).toProvider(BoxRequestFactoryProvider.class).in(Singleton.class);
 
         // Google Analytics
-        // bindConstant().annotatedWith(GaAccount.class).to(ANALYTICS_ACCOUNT);    
+        // bindConstant().annotatedWith(GaAccount.class).to(ANALYTICS_ACCOUNT);
+        bind(SerializerProvider.class).toProvider(SerializerProviderImple.class).in(Singleton.class);
+        
+        bindConstant().annotatedWith(RestApplicationPath.class).to("/rest");
+        install(new RestDispatchAsyncModule.Builder().build());
     }
 
+    static class SerializerProviderImple implements Provider<AbstractSerializerProvider> {
+
+		@Override
+		public AbstractSerializerProvider get() {
+			return null;
+		}
+    	
+    }
+    
     static class RequestFactoryProvider implements Provider<MyRequestFactory> {
         private final MyRequestFactory requestFactory;
 

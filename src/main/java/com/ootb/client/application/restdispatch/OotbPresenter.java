@@ -14,23 +14,12 @@
  * the License.
  */
 
-package com.ootb.client.application.sms;
+package com.ootb.client.application.restdispatch;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 
-import org.fusesource.restygwt.client.Method;
-import org.fusesource.restygwt.client.MethodCallback;
-import org.fusesource.restygwt.client.Resource;
-import org.fusesource.restygwt.client.RestServiceProxy;
-
-import com.google.gwt.core.client.GWT;
-import com.google.gwt.json.client.JSONArray;
-import com.google.gwt.json.client.JSONValue;
 import com.google.inject.Inject;
 import com.google.web.bindery.autobean.shared.AutoBean;
-import com.google.web.bindery.autobean.shared.AutoBeanCodex;
 import com.google.web.bindery.autobean.shared.AutoBeanFactory;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.mvp.client.HasUiHandlers;
@@ -50,7 +39,7 @@ public class OotbPresenter extends Presenter<OotbPresenter.MyView, OotbPresenter
     }
 
     @ProxyStandard
-    @NameToken(NameTokens.sms)
+    @NameToken(NameTokens.restDispatch)
     public interface MyProxy extends ProxyPlace<OotbPresenter> {
     }
 
@@ -67,31 +56,6 @@ public class OotbPresenter extends Presenter<OotbPresenter.MyView, OotbPresenter
     }
 
     private void loadEntities() {
-    	SmsService service = GWT.create(SmsService.class);
-//    	Resource resource = new Resource( GWT.getModuleBaseURL() );
-    	Resource resource = new Resource( GWT.getHostPageBaseURL());
-    	((RestServiceProxy)service).setResource(resource);
-    	
-    	service.getSMS(limit, offset, new MethodCallback<JSONValue>(){
-
-			@Override
-			public void onFailure(Method method, Throwable exception) {
-				Logger.getLogger(OotbPresenter.class.getName()).warning("Failed?" + exception.getMessage() );
-			}
-
-			@Override
-			public void onSuccess(Method method, JSONValue response) {
-				// Logger.getLogger(OotbPresenter.class.getName()).warning(">>>>>>" + response.toString());
-				 MyFactory factory = GWT.create(MyFactory.class);
-				 JSONArray array = response.isArray();
-				 ArrayList<BoxEntityProxy> list = new ArrayList<BoxEntityProxy>();
-				 for(int index=0; index < array.size(); index++) {
-					 JSONValue j = array.get(index);
-					 BoxEntityProxy box = AutoBeanCodex.decode(factory, BoxEntityProxy.class, j.toString()).as();
-					 list.add(box);
-				 }
-				getView().setData(list);
-			}});
     }
 
     private int offset = 0;

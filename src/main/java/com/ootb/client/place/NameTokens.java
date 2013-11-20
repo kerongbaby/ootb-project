@@ -20,6 +20,7 @@ public class NameTokens {
     public static final String home = "home";
     public static final String deliveryInfo = "deliveryinfo";
     public static final String sms = "sms";
+    public static final String restDispatch = "restdispatch";
 
     public static String getHome() {
         return home;

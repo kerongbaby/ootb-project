@@ -14,7 +14,7 @@
  * the License.
  */
 
-package com.ootb.client.application.sms;
+package com.ootb.client.application.restdispatch;
 
 import java.util.List;
 

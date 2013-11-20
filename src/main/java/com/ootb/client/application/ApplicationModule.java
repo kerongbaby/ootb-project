@@ -19,14 +19,14 @@ package com.ootb.client.application;
 import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
 import com.ootb.client.application.deliveryInfo.DeliveryInfoModule;
 import com.ootb.client.application.home.HomeModule;
-import com.ootb.client.application.sms.OotbModule;
+import com.ootb.client.application.restdispatch.RestDispatchModule;
 
 public class ApplicationModule extends AbstractPresenterModule {
     @Override
     protected void configure() {
         install(new HomeModule());
         install(new DeliveryInfoModule());
-        install(new OotbModule());
+        install(new RestDispatchModule());
 
         bindPresenter(ApplicationPresenter.class, ApplicationPresenter.MyView.class, ApplicationView.class,
                 ApplicationPresenter.MyProxy.class);

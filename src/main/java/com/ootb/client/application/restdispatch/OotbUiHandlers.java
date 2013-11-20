@@ -14,14 +14,13 @@
  * the License.
  */
 
-package com.ootb.client.application.sms;
+package com.ootb.client.application.restdispatch;
 
-import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
+import com.gwtplatform.mvp.client.UiHandlers;
 
-public class OotbModule extends AbstractPresenterModule {
-    @Override
-    protected void configure() {
-        bindPresenter(OotbPresenter.class, OotbPresenter.MyView.class, OotbView.class,
-        		OotbPresenter.MyProxy.class);
-    }
+interface OotbUiHandlers extends UiHandlers {
+    void goPrev();
+    void goNext();
+    void goLast();
+    void refresh();
 }
